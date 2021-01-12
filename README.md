@@ -21,6 +21,12 @@ The backend built with Laravel. The frontend is 100% React.
 
 Database MongoDB.
 
+## BD
+
+_If you don't have MongoDB installed, [instructions here](https://docs.mongodb.com/manual/administration/install-community/)._
+
+_If you need to connfig MongoDB for PHP, [instructions here](https://www.php.net/manual/es/mongodb.setup.php)._
+
 ## Set Up
 
 #### Clone the repository:
@@ -45,6 +51,10 @@ _The app key is used to salt passwords. If you need to work with production data
 -   HASHIDS_SALT (use the app key or match the variable used in production)
 
 #### Install PHP dependencies:
+
+```bash
+composer update
+```
 
 ```bash
 composer install
@@ -82,6 +92,10 @@ _If you don't have Node and NPM installed, [instructions here](https://www.npmjs
 
 ```bash
 npm run dev
+```
+
+```bash
+php artisan serve
 ```
 
 ### Additional Set Up Tips
