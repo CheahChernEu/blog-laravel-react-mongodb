@@ -323,6 +323,19 @@ const Register = (props) => {
                                             </div>
                                         </form>
                                     )}
+                                    {success && (
+                                        <div
+                                            className="alert alert-success text-center"
+                                            role="alert"
+                                        >
+                                            Registration successful.
+                                            <br />
+                                            <Link to="/" href="/">
+                                                Please log in with your new
+                                                email and password.
+                                            </Link>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 

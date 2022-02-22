@@ -154,7 +154,7 @@ const AddSlot = () => {
                                     type="title"
                                     name="title"
                                     className="form-control mr-3"
-                                    placeholder="SlotNo"
+                                    placeholder="e.g. B01"
                                     required
                                     onChange={handleChange}
                                     value={stateForm.title}
@@ -178,7 +178,7 @@ const AddSlot = () => {
                                     maxLength={1000}
                                     minLength={10}
                                     className="form-control mr-3"
-                                    placeholder="Address"
+                                    placeholder="e.g. 4C, Jalan Ipoh"
                                     onChange={handleChange}
                                     value={stateForm.content}
                                     ref={register()}
@@ -195,7 +195,7 @@ const AddSlot = () => {
                                 <input
                                     id="image_url"
                                     type="url"
-                                    name="image_url"
+                                    name="e.g.https://image.app.goo.gl"
                                     maxLength={100}
                                     className="form-control mr-3"
                                     placeholder=""
@@ -255,7 +255,7 @@ const AddSlot = () => {
                                                             ? deleteSlot
                                                             : () =>
                                                                   console.log(
-                                                                      "Not an owner"
+                                                                      "No access to the slot created by other admin"
                                                                   )
                                                     }
                                                     data-key={slot.id}
@@ -275,7 +275,7 @@ const AddSlot = () => {
                                                                   )
                                                             : () =>
                                                                   console.log(
-                                                                      "Not an owner"
+                                                                      "No access to the slot created by other admin"
                                                                   )
                                                     }
                                                     data-key={slot.id}

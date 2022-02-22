@@ -13068,7 +13068,7 @@ var AddSlot = function AddSlot() {
                 type: "title",
                 name: "title",
                 className: "form-control mr-3",
-                placeholder: "SlotNo",
+                placeholder: "e.g. B01",
                 required: true,
                 onChange: handleChange,
                 value: stateForm.title,
@@ -13089,7 +13089,7 @@ var AddSlot = function AddSlot() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("textarea", (_jsx2 = {
                 name: "content",
                 id: "content"
-              }, _defineProperty(_jsx2, "name", "content"), _defineProperty(_jsx2, "required", true), _defineProperty(_jsx2, "maxLength", 1000), _defineProperty(_jsx2, "minLength", 10), _defineProperty(_jsx2, "className", "form-control mr-3"), _defineProperty(_jsx2, "placeholder", "Address"), _defineProperty(_jsx2, "onChange", handleChange), _defineProperty(_jsx2, "value", stateForm.content), _defineProperty(_jsx2, "ref", register()), _jsx2)), errors.content && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+              }, _defineProperty(_jsx2, "name", "content"), _defineProperty(_jsx2, "required", true), _defineProperty(_jsx2, "maxLength", 1000), _defineProperty(_jsx2, "minLength", 10), _defineProperty(_jsx2, "className", "form-control mr-3"), _defineProperty(_jsx2, "placeholder", "e.g. 4C, Jalan Ipoh"), _defineProperty(_jsx2, "onChange", handleChange), _defineProperty(_jsx2, "value", stateForm.content), _defineProperty(_jsx2, "ref", register()), _jsx2)), errors.content && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                 className: "invalid-feedback",
                 children: "This field is required."
               })]
@@ -13101,7 +13101,7 @@ var AddSlot = function AddSlot() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", (_jsx3 = {
                 id: "image_url",
                 type: "url",
-                name: "image_url",
+                name: "e.g.https://image.app.goo.gl",
                 maxLength: 100,
                 className: "form-control mr-3",
                 placeholder: "",
@@ -13156,7 +13156,7 @@ var AddSlot = function AddSlot() {
                       type: "button",
                       className: "badge badge-danger",
                       onClick: slot.user_id === id ? deleteSlot : function () {
-                        return console.log("Not an owner");
+                        return console.log("No access to the slot created by other admin");
                       },
                       "data-key": slot.id,
                       children: "Delete"
@@ -13168,7 +13168,7 @@ var AddSlot = function AddSlot() {
                       onClick: slot.user_id === id ? function () {
                         return editSlot(slot);
                       } : function () {
-                        return console.log("Not an owner");
+                        return console.log("No access to the slot created by other admin");
                       },
                       "data-key": slot.id,
                       children: "Edit"
@@ -13841,8 +13841,16 @@ var Home = function Home(props) {
                 className: "rounded-circle ",
                 alt: "Logo"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+                style: {
+                  display: 'flex',
+                  justifyContent: 'center'
+                },
                 children: "Welcome to F_Truck"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                style: {
+                  display: 'flex',
+                  justifyContent: 'center'
+                },
                 children: "F_Truck brings you happiness everyday!"
               })]
             })
@@ -13917,7 +13925,7 @@ var Home = function Home(props) {
                     className: "form-group",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
                       htmlFor: "licenseNo",
-                      children: "License Number"
+                      children: "License Number/Staff Number"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
                       id: "licenseNo",
                       type: "text",
@@ -14608,6 +14616,33 @@ var Register = function Register(props) {
                       className: "invalid-feedback",
                       children: "This field is required"
                     })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                    className: "form-group",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                      htmlFor: "cellphone",
+                      children: "Phone Number"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                      id: "cellphone",
+                      type: "text",
+                      name: "cellphone",
+                      value: stateForm.cellphone,
+                      maxLength: 10,
+                      minLength: 7,
+                      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("form-control", {
+                        "is-invalid": "cellphone" in errors
+                      }),
+                      placeholder: "Cellphone",
+                      required: true,
+                      onChange: onHandleTelephoneChange,
+                      onBlur: handleBlur,
+                      disabled: loading,
+                      ref: register({
+                        required: true
+                      })
+                    }), errors.cellphone && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                      className: "invalid-feedback",
+                      children: "This field is required"
+                    })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                     className: "form-group text-center",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
@@ -14617,6 +14652,14 @@ var Register = function Register(props) {
                       }),
                       children: "Register"
                     })
+                  })]
+                }), success && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "alert alert-success text-center",
+                  role: "alert",
+                  children: ["Registration successful.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+                    to: "/",
+                    href: "/",
+                    children: "Please log in with your new email and password."
                   })]
                 })]
               })
@@ -14925,33 +14968,6 @@ var ResetPassword = function ResetPassword(props) {
                         required: true
                       })
                     }), errors.password_confirmation && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-                      className: "invalid-feedback",
-                      children: "This field is required"
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                    className: "form-group",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                      htmlFor: "cellphone",
-                      children: "Phone Number"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                      id: "cellphone",
-                      type: "text",
-                      name: "cellphone",
-                      value: stateForm.cellphone,
-                      maxLength: 10,
-                      minLength: 7,
-                      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("form-control", {
-                        "is-invalid": "cellphone" in errors
-                      }),
-                      placeholder: "Cellphone",
-                      required: true,
-                      onChange: onHandleTelephoneChange,
-                      onBlur: handleBlur,
-                      disabled: loading,
-                      ref: register({
-                        required: true
-                      })
-                    }), errors.cellphone && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                       className: "invalid-feedback",
                       children: "This field is required"
                     })]

@@ -76,8 +76,8 @@ const Home = (props) => {
                                     className="rounded-circle "
                                     alt="Logo"
                                 ></img>
-                                <h2>Welcome to F_Truck</h2>
-                                <p>F_Truck brings you happiness everyday!</p>
+                                <h2 style={{display:'flex', justifyContent: 'center'}}>Welcome to F_Truck</h2>
+                                <p style={{display:'flex', justifyContent: 'center'}}>F_Truck brings you happiness everyday!</p>
                             </div>
                         </div>
                         <div className="section-login col-lg-6">
@@ -168,7 +168,7 @@ const Home = (props) => {
 
                                         <div className="form-group">
                                             <label htmlFor="licenseNo">
-                                                License Number
+                                                License Number/Staff Number
                                             </label>
                                             <input
                                                 id="licenseNo"
