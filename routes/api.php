@@ -30,6 +30,7 @@ Route::group([
     'prefix' => 'v1'
 ], function ($router) {
     Route::apiResource('article', 'ArticleController');
+    Route::apiResource('slot', 'SlotController');
     Route::apiResource('like', 'LikesController');
     Route::apiResource('comments', 'CommentsController');
 });

@@ -1,29 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Http from "../Http";
 import { useForm } from "react-hook-form";
-import Dropdown from "../components/Dropdown";
 import swal from "sweetalert";
 
-const api = "/api/v1/article";
+const api = "/api/v1/slot";
 
-const options = [
-    { value: "1", label: "Technology" },
-    { value: "2", label: "Entertainment" },
-    { value: "3", label: "Music" },
-    { value: "4", label: "Fashion" },
-    { value: "5", label: "Sports" },
-    { value: "6", label: "Arts" },
-    { value: "7", label: "Travel" },
-    { value: "8", label: "Literature" },
-    { value: "9", label: "Science" },
-    { value: "10", label: "Politics" },
-    { value: "11", label: "Economy" },
-    { value: "12", label: "Nature" },
-    { value: "13", label: "Health" },
-    { value: "14", label: "Culture" },
-];
-
-const Dashboard = () => {
+const AddSlot = () => {
     const session = JSON.parse(window.localStorage.getItem("user"));
     const { id } = session;
     const { register, handleSubmit, watch, errors } = useForm();
@@ -33,8 +15,6 @@ const Dashboard = () => {
         content: "",
         title: "",
         image_url: "",
-        slug: "",
-        cat_id: {},
     });
 
     useEffect(() => {
@@ -60,19 +40,19 @@ const Dashboard = () => {
     };
 
     const onSubmit = () => {
-        addArticle(stateForm);
+        addSlot(stateForm);
     };
 
-    const addArticle = (article) => {
-        if (article?.id) {
-            Http.patch(`${api}/${article.id}`, article)
+    const addSlot = (slot) => {
+        if (slot?.id) {
+            Http.patch(`${api}/${slot.id}`, slot)
                 .then((response) => {
                     console.log(response);
-                    let filterArticles = dataState.filter(
-                        (art) => art.id !== article.id
+                    let filterSlots = dataState.filter(
+                        (art) => art.id !== slot.id
                     );
-                    filterArticles = [article, ...filterArticles];
-                    setData(filterArticles);
+                    filterSlots = [slot, ...filterSlots];
+                    setData(filterSlots);
                     setStateForm({
                         content: "",
                         title: "",
@@ -83,14 +63,14 @@ const Dashboard = () => {
                     setError(false);
                 })
                 .catch(() => {
-                    setError("Sorry, there was an error saving your article.");
+                    setError("Sorry, there was an error saving your food truck slot.");
                 });
         } else {
-            Http.post(api, article)
+            Http.post(api, slot)
                 .then(({ data }) => {
-                    article = { id: data.id, ...article };
-                    const allArticles = [article, ...dataState];
-                    setData(allArticles);
+                    slot = { id: data.id, ...slot };
+                    const allSlots = [slot, ...dataState];
+                    setData(allSlots);
                     setStateForm({
                         content: "",
                         title: "",
@@ -101,40 +81,23 @@ const Dashboard = () => {
                     setError(false);
                 })
                 .catch(() => {
-                    setError("Sorry, there was an error saving your article.");
+                    setError("Sorry, there was an error saving your food truck slot.");
                 });
         }
     };
 
-    const editArticle = (article) => {
-        const { id } = article;
+    const editSlot = (slot) => {
+        const { id } = slot;
         let form = dataState.filter((art) => art.id === id);
         console.log(id, form);
         setStateForm(form[0]);
     };
 
-    const closeArticle = (e) => {
-        const { key } = e.target.dataset;
-        const { articles } = dataState;
-
-        Http.patch(`${api}/${key}`, { status: "closed" })
-            .then(() => {
-                const updatedArticles = articles.filter(
-                    (article) => article.id !== key
-                );
-                setData(updatedArticles);
-                setError(false);
-            })
-            .catch(() => {
-                setError("Sorry, there was an error saving your article.");
-            });
-    };
-
-    const deleteArticle = (e) => {
+    const deleteSlot = (e) => {
         const { key } = e.target.dataset;
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this article!",
+            text: "Once deleted, you will not be able to recover this food truck slot!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -146,12 +109,12 @@ const Dashboard = () => {
                         console.log(response);
                         if (response.status === 204) {
                             const updateState = dataState.filter(
-                                (article) => article.id !== key
+                                (slot) => slot.id !== key
                             );
                             setError(false);
                             setData(updateState);
-                            console.log("Articles:", updateState);
-                            swal("The Article has been deleted!", {
+                            console.log("Food truck slot:", updateState);
+                            swal("The food truck slot has been deleted!", {
                                 icon: "success",
                             });
                         } else {
@@ -181,22 +144,22 @@ const Dashboard = () => {
                 <div className="col">
                     <div className="add-todos mb-5">
                         <h1 className="text-center mb-4">
-                            Add/Update an Article jasdfgkjashbkdjhbasjdsa
+                            Add/ Update Food Truck Slot
                         </h1>
                         <form method="post" onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-group">
-                                <label htmlFor="title">Title </label>
+                                <label htmlFor="title">Slot No</label>
                                 <input
                                     id="title"
                                     type="title"
                                     name="title"
                                     className="form-control mr-3"
-                                    placeholder="Title..."
+                                    placeholder="SlotNo"
                                     required
                                     onChange={handleChange}
                                     value={stateForm.title}
                                     maxLength={100}
-                                    minLength={5}
+                                    minLength={3}
                                     ref={register({ required: true })}
                                 />
                                 {errors.title && (
@@ -206,16 +169,16 @@ const Dashboard = () => {
                                 )}
                             </div>
                             <div className="form-group">
-                                <label htmlFor="addArticle">Content</label>
+                                <label htmlFor="addSlot">Address</label>
                                 <textarea
                                     name="content"
                                     id="content"
                                     name="content"
                                     required
                                     maxLength={1000}
-                                    minLength={20}
+                                    minLength={10}
                                     className="form-control mr-3"
-                                    placeholder="Build a Blog app..."
+                                    placeholder="Address"
                                     onChange={handleChange}
                                     value={stateForm.content}
                                     ref={register()}
@@ -228,7 +191,7 @@ const Dashboard = () => {
                                 )}
                             </div>
                             <div className="form-group">
-                                <label htmlFor="image_url">Image Url</label>
+                                <label htmlFor="image_url">Slot Image Url</label>
                                 <input
                                     id="image_url"
                                     type="url"
@@ -241,40 +204,6 @@ const Dashboard = () => {
                                     value={stateForm.image_url}
                                     ref={register()}
                                 />
-                            </div>
-                            <div className="row">
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="slug">Slug</label>
-                                        <input
-                                            id="slug"
-                                            name="slug"
-                                            maxLength={20}
-                                            className="form-control mr-3"
-                                            placeholder="Nice!"
-                                            maxLength={12}
-                                            onChange={handleChange}
-                                            value={stateForm.slug}
-                                            ref={register()}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <label htmlFor="category">
-                                        Select a Category
-                                    </label>
-                                    <div className="form-group">
-                                        <Dropdown
-                                            title={
-                                                stateForm?.cat_id?.label ??
-                                                "Category"
-                                            }
-                                            options={options}
-                                            setStateForm={setStateForm}
-                                            stateForm={stateForm}
-                                        />
-                                    </div>
-                                </div>
                             </div>
                             <button
                                 type="submit"
@@ -292,75 +221,44 @@ const Dashboard = () => {
                 </div>
                 <div className="col">
                     <div className="todos">
-                        <h1 className="text-center mb-4">Preview Articles</h1>
+                        <h1 className="text-center mb-4">List of Food Truck Slots</h1>
                         <table className="table table-striped">
                             <tbody>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Image</th>
-                                    <th>Slug</th>
-                                    <th>Category</th>
-                                    <th>Approve</th>
+                                    <th>Slot No</th>
+                                    <th>Address</th>
+                                    <th>Slot Image</th>
                                     <th>Delete</th>
                                     <th>Edit</th>
                                 </tr>
                                 {dataState.length > 0 &&
-                                    dataState.map((article) => (
-                                        <tr key={article.id}>
-                                            <td>{article.title}</td>
+                                    dataState.map((slot) => (
+                                        <tr key={slot.id}>
+                                            <td>{slot.title}</td>
                                             <td>
-                                                {article.content
+                                                {slot.content
                                                     .slice(0, 30)
                                                     .concat("...")}
                                             </td>
                                             <td>
                                                 <img
-                                                    src={article.image_url}
+                                                    src={slot.image_url}
                                                     className="rounded mx-auto d-block"
-                                                    alt={article.slug}
                                                 ></img>
-                                            </td>
-                                            <td>
-                                                <span className="badge badge-success">
-                                                    {article.slug}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span className="badge badge-warning">
-                                                    {article.cat_id.label}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span
-                                                    type="button"
-                                                    className="badge badge-info"
-                                                    onClick={
-                                                        article.user_id === id
-                                                            ? closeArticle
-                                                            : () =>
-                                                                  console.log(
-                                                                      "Not an owner"
-                                                                  )
-                                                    }
-                                                    data-key={article.id}
-                                                >
-                                                    Approve
-                                                </span>
                                             </td>
                                             <td>
                                                 <span
                                                     type="button"
                                                     className="badge badge-danger"
                                                     onClick={
-                                                        article.user_id === id
-                                                            ? deleteArticle
+                                                        slot.user_id === id
+                                                            ? deleteSlot
                                                             : () =>
                                                                   console.log(
                                                                       "Not an owner"
                                                                   )
                                                     }
-                                                    data-key={article.id}
+                                                    data-key={slot.id}
                                                 >
                                                     Delete
                                                 </span>
@@ -370,17 +268,17 @@ const Dashboard = () => {
                                                     type="button"
                                                     className="badge badge-dark"
                                                     onClick={
-                                                        article.user_id === id
+                                                        slot.user_id === id
                                                             ? () =>
-                                                                  editArticle(
-                                                                      article
+                                                                  editSlot(
+                                                                      slot
                                                                   )
                                                             : () =>
                                                                   console.log(
                                                                       "Not an owner"
                                                                   )
                                                     }
-                                                    data-key={article.id}
+                                                    data-key={slot.id}
                                                 >
                                                     Edit
                                                 </span>
@@ -396,4 +294,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default AddSlot;

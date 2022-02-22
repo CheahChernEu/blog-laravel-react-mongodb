@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 import * as actions from '../store/actions';
 
-const Header = (props) => {
+const SuperAdminHeader = (props) => {
   const handleLogout = (e) => {
       e.preventDefault();
       props.dispatch(actions.authLogout());
@@ -20,17 +20,17 @@ const Header = (props) => {
   return (
     <header className="d-flex align-items-center justify-content-between">
     <h1 className="logo my-0 font-weight-normal h4">
-      <Link to="/">Blog App</Link>
+      <Link to="/"
+      style={{
+        textDecoration: "none",
+      }}
+      >F_Truck
+      </Link>
     </h1>
 
     {props.isAuthenticated && (
       <div className="navigation d-flex justify-content-end">
         <Nav>
-          <NavItem>
-            <NavLink tag={Link} to="/archive">
-              Blog Archive
-            </NavLink>
-          </NavItem>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
               Account
@@ -54,4 +54,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.Auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(SuperAdminHeader);

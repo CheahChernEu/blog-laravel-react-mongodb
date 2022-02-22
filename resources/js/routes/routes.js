@@ -1,19 +1,40 @@
 import Home from '../pages/Home';
 import Login from '../pages/Login';
-import Dashboard from '../pages/Dashboard';
 import Register from '../pages/Register';
 import ForgotPassword from '../pages/ForgotPassword';
 import ResetPassword from '../pages/ResetPassword';
 import Archive from '../pages/Archive';
 import NoMatch from '../pages/NoMatch';
+import AdminDashboard from '../pages/AdminDashboard';
+import AddSlot from '../pages/AddSlot';
+import ViewReservation from '../pages/ViewReservation';
+import AddStaff from '../pages/AddStaff';
 
 const routes = [
   {
     path: '/',
     exact: true,
     auth: true,
-    component: Dashboard,
+    component: AdminDashboard,
     fallback: Home,
+  },
+  {
+    path: '/add-staff',
+    exact: true,
+    auth: true,
+    component: AddStaff,
+  },
+  {
+    path: '/add-slot',
+    exact: true,
+    auth: true,
+    component: AddSlot,
+  },
+  {
+    path: '/view-reservation',
+    exact: true,
+    auth: true,
+    component: ViewReservation,
   },
   {
     path: '/login',

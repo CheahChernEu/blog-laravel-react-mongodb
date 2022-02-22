@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Header from './components/Header';
+import AdminHeader from './components/AdminHeader';
+import SuperAdminHeader from './components/SuperAdminHeader';
 
 const Base = ({ children }) => (
   <div>
-    <Header />
+    <AdminHeader />
     <main>{children}</main>
   </div>
 );
