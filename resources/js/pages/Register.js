@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 const Register = (props) => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [stateForm, setStateForm] = useState({
-        name: "",
+        licenseNo: "",
         cellphone: "",
         type: "user",
         email: "",
@@ -57,11 +57,11 @@ const Register = (props) => {
             cellphone,
             type,
             password,
-            name,
+            licenseNo,
             password_confirmation,
         } = stateForm;
         const credentials = {
-            name,
+            licenseNo,
             email,
             cellphone,
             type,
@@ -97,7 +97,7 @@ const Register = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="section-login col-lg-6 ml-auto mr-auto">
-                            <h4>Register for the App</h4>
+                            <h4>F_Truck Registration</h4>
 
                             <div className="card-login card mb-3">
                                 <div className="card-body">
@@ -132,23 +132,23 @@ const Register = (props) => {
                                         >
                                             <div className="form-group">
                                                 <label htmlFor="name">
-                                                    Name
+                                                    License Number
                                                 </label>
                                                 <input
-                                                    id="name"
-                                                    type="name"
+                                                    id="licenseNo"
+                                                    type="licenseNo"
                                                     maxLength={100}
-                                                    name="name"
-                                                    value={stateForm.name}
+                                                    name="licenseNo"
+                                                    value={stateForm.licenseNo}
                                                     className={classNames(
                                                         "form-control",
                                                         {
                                                             "is-invalid":
-                                                                "name" in
+                                                                "licenseNo" in
                                                                 errors,
                                                         }
                                                     )}
-                                                    placeholder="Enter name"
+                                                    placeholder="Enter License No"
                                                     required
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
@@ -157,44 +157,7 @@ const Register = (props) => {
                                                         required: true,
                                                     })}
                                                 />
-                                                {errors.name && (
-                                                    <span className="invalid-feedback">
-                                                        This field is required
-                                                    </span>
-                                                )}
-                                            </div>
-
-                                            <div className="form-group">
-                                                <label htmlFor="cellphone">
-                                                    Cellphone
-                                                </label>
-                                                <input
-                                                    id="cellphone"
-                                                    type="text"
-                                                    name="cellphone"
-                                                    value={stateForm.cellphone}
-                                                    maxLength={10}
-                                                    minLength={7}
-                                                    className={classNames(
-                                                        "form-control",
-                                                        {
-                                                            "is-invalid":
-                                                                "cellphone" in
-                                                                errors,
-                                                        }
-                                                    )}
-                                                    placeholder="Cellphone"
-                                                    required
-                                                    onChange={
-                                                        onHandleTelephoneChange
-                                                    }
-                                                    onBlur={handleBlur}
-                                                    disabled={loading}
-                                                    ref={register({
-                                                        required: true,
-                                                    })}
-                                                />
-                                                {errors.cellphone && (
+                                                {errors.licenseNo && (
                                                     <span className="invalid-feedback">
                                                         This field is required
                                                     </span>
@@ -307,13 +270,51 @@ const Register = (props) => {
                                                 )}
                                             </div>
 
+                                            <div className="form-group">
+                                                <label htmlFor="cellphone">
+                                                    Phone Number
+                                                </label>
+                                                <input
+                                                    id="cellphone"
+                                                    type="text"
+                                                    name="cellphone"
+                                                    value={stateForm.cellphone}
+                                                    maxLength={10}
+                                                    minLength={7}
+                                                    className={classNames(
+                                                        "form-control",
+                                                        {
+                                                            "is-invalid":
+                                                                "cellphone" in
+                                                                errors,
+                                                        }
+                                                    )}
+                                                    placeholder="Cellphone"
+                                                    required
+                                                    onChange={
+                                                        onHandleTelephoneChange
+                                                    }
+                                                    onBlur={handleBlur}
+                                                    disabled={loading}
+                                                    ref={register({
+                                                        required: true,
+                                                    })}
+                                                />
+                                                {errors.cellphone && (
+                                                    <span className="invalid-feedback">
+                                                        This field is required
+                                                    </span>
+                                                )}
+                                            </div>
+
                                             <div className="form-group text-center">
                                                 <button
                                                     type="submit"
                                                     className={classNames(
                                                         "btn btn-primary",
                                                         {
-                                                            "btn-loading": loading,
+                                                            "btn-loading":
+                                                                loading,
                                                         }
                                                     )}
                                                 >

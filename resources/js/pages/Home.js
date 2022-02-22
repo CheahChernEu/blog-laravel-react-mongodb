@@ -5,10 +5,15 @@ import { Link, Redirect } from "react-router-dom";
 import AuthService from "../services";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
+import logo from "../assets/logo.png";
 
 const Home = (props) => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const [stateForm, setStateForm] = useState({ email: "", password: "" });
+    const [stateForm, setStateForm] = useState({
+        email: "",
+        password: "",
+        licenseNo: "",
+    });
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState({ error: false, message: "" });
 
@@ -34,10 +39,11 @@ const Home = (props) => {
 
     const onSubmit = () => {
         //e.preventDefault();
-        const { email, password } = stateForm;
+        const { email, password, licenseNo } = stateForm;
         const credentials = {
             email,
             password,
+            licenseNo,
         };
         setLoading(true);
         submit(credentials);
@@ -63,23 +69,19 @@ const Home = (props) => {
             <div className="d-flex flex-column flex-md-row align-items-md-center py-5">
                 <div className="container">
                     <div className="row">
-                        <div className="section-about col-lg-6 mb-4 mb-lg-0">
+                        <div className="section-about col-lg-6 mb-1 mb-lg-0">
                             <div>
-                                <h2>Blog App - Sample</h2>
-                                <p>
-                                    Built with Laravel, React and MongoDB.
-                                    Includes JWT auth, registration, login,
-                                    routing and tests.
-                                </p>
-                                <p>
-                                    <a href="https://github.com/danielhdz23/blog-laravel-react-mongodb">
-                                        Source code and documentation on GitHub.
-                                    </a>
-                                </p>
+                                <img
+                                    src={logo}
+                                    className="rounded-circle "
+                                    alt="Logo"
+                                ></img>
+                                <h2>Welcome to F_Truck</h2>
+                                <p>F_Truck brings you happiness everyday!</p>
                             </div>
                         </div>
                         <div className="section-login col-lg-6">
-                            <h4>Log in to the App</h4>
+                            <h4>F_Truck Login</h4>
 
                             <div className="card-login card mb-3">
                                 <div className="card-body">
@@ -114,7 +116,7 @@ const Home = (props) => {
                                                             "email" in errors,
                                                     }
                                                 )}
-                                                placeholder="Enter email"
+                                                placeholder="Enter email e.g. username@gmail.com"
                                                 required
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
@@ -158,6 +160,40 @@ const Home = (props) => {
                                                 })}
                                             />
                                             {errors.password && (
+                                                <span className="invalid-feedback">
+                                                    This field is required
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label htmlFor="licenseNo">
+                                                License Number
+                                            </label>
+                                            <input
+                                                id="licenseNo"
+                                                type="text"
+                                                maxLength={15}
+                                                minLength={6}
+                                                className={classNames(
+                                                    "form-control",
+                                                    {
+                                                        "is-invalid":
+                                                            "licenseNo" in
+                                                            errors,
+                                                    }
+                                                )}
+                                                name="licenseNo"
+                                                placeholder="Enter licenseNo"
+                                                required
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                disabled={loading}
+                                                ref={register({
+                                                    required: true,
+                                                })}
+                                            />
+                                            {errors.licenseNo && (
                                                 <span className="invalid-feedback">
                                                     This field is required
                                                 </span>

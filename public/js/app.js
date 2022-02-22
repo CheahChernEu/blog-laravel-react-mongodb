@@ -13702,12 +13702,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services */ "./resources/js/services/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.js");
+/* harmony import */ var _assets_logo_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../assets/logo.png */ "./resources/js/assets/logo.png");
 
 
 
@@ -13738,6 +13739,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Home = function Home(props) {
   var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_6__.useForm)(),
       register = _useForm.register,
@@ -13747,7 +13749,8 @@ var Home = function Home(props) {
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     email: "",
-    password: ""
+    password: "",
+    licenseNo: ""
   }),
       _useState2 = _slicedToArray(_useState, 2),
       stateForm = _useState2[0],
@@ -13796,10 +13799,12 @@ var Home = function Home(props) {
   var onSubmit = function onSubmit() {
     //e.preventDefault();
     var email = stateForm.email,
-        password = stateForm.password;
+        password = stateForm.password,
+        licenseNo = stateForm.licenseNo;
     var credentials = {
       email: email,
-      password: password
+      password: password,
+      licenseNo: licenseNo
     };
     setLoading(true);
     submit(credentials);
@@ -13820,7 +13825,7 @@ var Home = function Home(props) {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: [isAuthenticated && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Redirect, {
+    children: [isAuthenticated && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Redirect, {
       to: from
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "d-flex flex-column flex-md-row align-items-md-center py-5",
@@ -13829,23 +13834,22 @@ var Home = function Home(props) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "section-about col-lg-6 mb-4 mb-lg-0",
+            className: "section-about col-lg-6 mb-1 mb-lg-0",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
-                children: "Blog App - Sample"
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: _assets_logo_png__WEBPACK_IMPORTED_MODULE_7__.default,
+                className: "rounded-circle ",
+                alt: "Logo"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+                children: "Welcome to F_Truck"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-                children: "Built with Laravel, React and MongoDB. Includes JWT auth, registration, login, routing and tests."
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                  href: "https://github.com/danielhdz23/blog-laravel-react-mongodb",
-                  children: "Source code and documentation on GitHub."
-                })
+                children: "F_Truck brings you happiness everyday!"
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             className: "section-login col-lg-6",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
-              children: "Log in to the App"
+              children: "F_Truck Login"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
               className: "card-login card mb-3",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -13871,7 +13875,7 @@ var Home = function Home(props) {
                       className: classnames__WEBPACK_IMPORTED_MODULE_5___default()("form-control", {
                         "is-invalid": "email" in errors
                       }),
-                      placeholder: "Enter email",
+                      placeholder: "Enter email e.g. username@gmail.com",
                       required: true,
                       onChange: handleChange,
                       onBlur: handleBlur,
@@ -13909,6 +13913,32 @@ var Home = function Home(props) {
                       className: "invalid-feedback",
                       children: "This field is required"
                     })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                    className: "form-group",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                      htmlFor: "licenseNo",
+                      children: "License Number"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                      id: "licenseNo",
+                      type: "text",
+                      maxLength: 15,
+                      minLength: 6,
+                      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()("form-control", {
+                        "is-invalid": "licenseNo" in errors
+                      }),
+                      name: "licenseNo",
+                      placeholder: "Enter licenseNo",
+                      required: true,
+                      onChange: handleChange,
+                      onBlur: handleBlur,
+                      disabled: loading,
+                      ref: register({
+                        required: true
+                      })
+                    }), errors.licenseNo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                      className: "invalid-feedback",
+                      children: "This field is required"
+                    })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                     className: "form-group text-center",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
@@ -13920,7 +13950,7 @@ var Home = function Home(props) {
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                     className: "login-invite-text text-center",
-                    children: ["Don't have an account?", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+                    children: ["Don't have an account?", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
                       to: "/register",
                       children: "Register"
                     }), "."]
@@ -13929,7 +13959,7 @@ var Home = function Home(props) {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
               className: "password-reset-link text-center",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
                 to: "/forgot-password",
                 children: "Forgot Your Password?"
               })
@@ -14100,7 +14130,7 @@ var Login = function Login(props) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             className: "section-login col-lg-6 ml-auto mr-auto",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
-              children: "Log in to the App"
+              children: "F_Truck Login"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
               className: "card-login card mb-3",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -14115,9 +14145,9 @@ var Login = function Login(props) {
                   onSubmit: handleSubmit(onSubmit),
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                     className: "form-group",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("label", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
                       htmlFor: "email",
-                      children: ["Email Address", " "]
+                      children: "Email Address"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
                       id: "email",
                       type: "email",
@@ -14140,9 +14170,35 @@ var Login = function Login(props) {
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                     className: "form-group",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("label", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
                       htmlFor: "password",
-                      children: ["Password", " "]
+                      children: "Password"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                      id: "password",
+                      type: "password",
+                      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("form-control", {
+                        "is-invalid": "password" in errors
+                      }),
+                      name: "password",
+                      placeholder: "Enter password",
+                      maxLength: 15,
+                      minLength: 6,
+                      required: true,
+                      onChange: handleChange,
+                      onBlur: handleBlur,
+                      disabled: loading,
+                      ref: register({
+                        required: true
+                      })
+                    }), errors.password && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                      className: "invalid-feedback",
+                      children: "This field is required"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                    className: "form-group",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                      htmlFor: "password",
+                      children: "Password"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
                       id: "password",
                       type: "password",
@@ -14315,7 +14371,7 @@ var Register = function Register(props) {
       errors = _useForm.errors;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
-    name: "",
+    licenseNo: "",
     cellphone: "",
     type: "user",
     email: "",
@@ -14382,10 +14438,10 @@ var Register = function Register(props) {
         cellphone = stateForm.cellphone,
         type = stateForm.type,
         password = stateForm.password,
-        name = stateForm.name,
+        licenseNo = stateForm.licenseNo,
         password_confirmation = stateForm.password_confirmation;
     var credentials = {
-      name: name,
+      licenseNo: licenseNo,
       email: email,
       cellphone: cellphone,
       type: type,
@@ -14425,7 +14481,7 @@ var Register = function Register(props) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             className: "section-login col-lg-6 ml-auto mr-auto",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
-              children: "Register for the App"
+              children: "F_Truck Registration"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
               className: "card-login card mb-3",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -14450,17 +14506,17 @@ var Register = function Register(props) {
                     className: "form-group",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
                       htmlFor: "name",
-                      children: "Name"
+                      children: "License Number"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                      id: "name",
-                      type: "name",
+                      id: "licenseNo",
+                      type: "licenseNo",
                       maxLength: 100,
-                      name: "name",
-                      value: stateForm.name,
+                      name: "licenseNo",
+                      value: stateForm.licenseNo,
                       className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("form-control", {
-                        "is-invalid": "name" in errors
+                        "is-invalid": "licenseNo" in errors
                       }),
-                      placeholder: "Enter name",
+                      placeholder: "Enter License No",
                       required: true,
                       onChange: handleChange,
                       onBlur: handleBlur,
@@ -14468,34 +14524,7 @@ var Register = function Register(props) {
                       ref: register({
                         required: true
                       })
-                    }), errors.name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-                      className: "invalid-feedback",
-                      children: "This field is required"
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                    className: "form-group",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                      htmlFor: "cellphone",
-                      children: "Cellphone"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                      id: "cellphone",
-                      type: "text",
-                      name: "cellphone",
-                      value: stateForm.cellphone,
-                      maxLength: 10,
-                      minLength: 7,
-                      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("form-control", {
-                        "is-invalid": "cellphone" in errors
-                      }),
-                      placeholder: "Cellphone",
-                      required: true,
-                      onChange: onHandleTelephoneChange,
-                      onBlur: handleBlur,
-                      disabled: loading,
-                      ref: register({
-                        required: true
-                      })
-                    }), errors.cellphone && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                    }), errors.licenseNo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                       className: "invalid-feedback",
                       children: "This field is required"
                     })]
@@ -14896,6 +14925,33 @@ var ResetPassword = function ResetPassword(props) {
                         required: true
                       })
                     }), errors.password_confirmation && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                      className: "invalid-feedback",
+                      children: "This field is required"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                    className: "form-group",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                      htmlFor: "cellphone",
+                      children: "Phone Number"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                      id: "cellphone",
+                      type: "text",
+                      name: "cellphone",
+                      value: stateForm.cellphone,
+                      maxLength: 10,
+                      minLength: 7,
+                      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("form-control", {
+                        "is-invalid": "cellphone" in errors
+                      }),
+                      placeholder: "Cellphone",
+                      required: true,
+                      onChange: onHandleTelephoneChange,
+                      onBlur: handleBlur,
+                      disabled: loading,
+                      ref: register({
+                        required: true
+                      })
+                    }), errors.cellphone && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                       className: "invalid-feedback",
                       children: "This field is required"
                     })]
@@ -16219,6 +16275,21 @@ defineProperties.supportsDescriptors = !!supportsDescriptors;
 
 module.exports = defineProperties;
 
+
+/***/ }),
+
+/***/ "./resources/js/assets/logo.png":
+/*!**************************************!*\
+  !*** ./resources/js/assets/logo.png ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.png?8b9c998f3ef8b7e264c3ebdcc957c458");
 
 /***/ }),
 

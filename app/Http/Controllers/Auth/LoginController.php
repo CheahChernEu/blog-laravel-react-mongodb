@@ -17,7 +17,7 @@ class LoginController extends APIController
      */
     public function login()
     {
-        $credentials = request(['email', 'password']);
+        $credentials = request(['email', 'password', 'licenseNo']);
 
         if (! $token = auth()->attempt($credentials)) {
             return $this->responseUnauthorized();
@@ -34,7 +34,7 @@ class LoginController extends APIController
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => array(
                 'id' => $user->id, // $user->hashid
-                'name' => $user->name
+                'licenseNo' => $user->licenseNo
             )
         ], 200);
     }
