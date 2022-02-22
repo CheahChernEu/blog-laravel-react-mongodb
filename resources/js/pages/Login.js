@@ -63,7 +63,7 @@ const Login = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="section-login col-lg-6 ml-auto mr-auto">
-                            <h4>Log in to the App</h4>
+                            <h4>F_Truck Login</h4>
 
                             <div className="card-login card mb-3">
                                 <div className="card-body">
@@ -84,7 +84,7 @@ const Login = (props) => {
                                     >
                                         <div className="form-group">
                                             <label htmlFor="email">
-                                                Email Address{" "}
+                                                Email Address
                                             </label>
                                             <input
                                                 id="email"
@@ -116,7 +116,42 @@ const Login = (props) => {
 
                                         <div className="form-group">
                                             <label htmlFor="password">
-                                                Password{" "}
+                                                Password
+                                            </label>
+                                            <input
+                                                id="password"
+                                                type="password"
+                                                className={classNames(
+                                                    "form-control",
+                                                    {
+                                                        "is-invalid":
+                                                            "password" in
+                                                            errors,
+                                                    }
+                                                )}
+                                                name="password"
+                                                placeholder="Enter password"
+                                                maxLength={15}
+                                                minLength={6}
+                                                required
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                disabled={loading}
+                                                ref={register({
+                                                    required: true,
+                                                })}
+                                            />
+
+                                            {errors.password && (
+                                                <span className="invalid-feedback">
+                                                    This field is required
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label htmlFor="password">
+                                                Password
                                             </label>
                                             <input
                                                 id="password"

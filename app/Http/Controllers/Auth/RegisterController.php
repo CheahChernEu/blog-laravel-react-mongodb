@@ -28,7 +28,7 @@ class RegisterController extends APIController
     {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'licenseNo' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'cellphone' => 'required|string|min:7',
@@ -55,7 +55,7 @@ class RegisterController extends APIController
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'licenseNo' => $data['licenseNo'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'cellphone' => $data['cellphone'],
