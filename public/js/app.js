@@ -12964,9 +12964,7 @@ var AddSlot = function AddSlot() {
         setStateForm({
           content: "",
           title: "",
-          image_url: "",
-          slug: "",
-          cat_id: {}
+          image_url: ""
         });
         setError(false);
       })["catch"](function () {
@@ -12983,9 +12981,7 @@ var AddSlot = function AddSlot() {
         setStateForm({
           content: "",
           title: "",
-          image_url: "",
-          slug: "",
-          cat_id: {}
+          image_url: ""
         });
         setError(false);
       })["catch"](function () {
@@ -13101,10 +13097,10 @@ var AddSlot = function AddSlot() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", (_jsx3 = {
                 id: "image_url",
                 type: "url",
-                name: "e.g.https://image.app.goo.gl",
+                name: "image_url",
                 maxLength: 100,
                 className: "form-control mr-3",
-                placeholder: "",
+                placeholder: "e.g.https://image.app.goo.gl",
                 onChange: handleChange
               }, _defineProperty(_jsx3, "maxLength", 70), _defineProperty(_jsx3, "value", stateForm.image_url), _defineProperty(_jsx3, "ref", register()), _jsx3))]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {

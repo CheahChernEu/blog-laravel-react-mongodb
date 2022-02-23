@@ -57,8 +57,6 @@ const AddSlot = () => {
                         content: "",
                         title: "",
                         image_url: "",
-                        slug: "",
-                        cat_id: {},
                     });
                     setError(false);
                 })
@@ -75,8 +73,7 @@ const AddSlot = () => {
                         content: "",
                         title: "",
                         image_url: "",
-                        slug: "",
-                        cat_id: {},
+
                     });
                     setError(false);
                 })
@@ -195,10 +192,10 @@ const AddSlot = () => {
                                 <input
                                     id="image_url"
                                     type="url"
-                                    name="e.g.https://image.app.goo.gl"
+                                    name="image_url"
                                     maxLength={100}
                                     className="form-control mr-3"
-                                    placeholder=""
+                                    placeholder="e.g.https://image.app.goo.gl"
                                     onChange={handleChange}
                                     maxLength={70}
                                     value={stateForm.image_url}
