@@ -14055,7 +14055,8 @@ var Login = function Login(props) {
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     email: "",
-    password: ""
+    password: "",
+    licenseNo: ""
   }),
       _useState2 = _slicedToArray(_useState, 2),
       stateForm = _useState2[0],
@@ -14102,11 +14103,14 @@ var Login = function Login(props) {
   };
 
   var onSubmit = function onSubmit() {
+    //e.preventDefault();
     var email = stateForm.email,
-        password = stateForm.password;
+        password = stateForm.password,
+        licenseNo = stateForm.licenseNo;
     var credentials = {
       email: email,
-      password: password
+      password: password,
+      licenseNo: licenseNo
     };
     setLoading(true);
     submit(credentials);
@@ -14205,18 +14209,18 @@ var Login = function Login(props) {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                     className: "form-group",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                      htmlFor: "password",
-                      children: "Password"
+                      htmlFor: "licenseNo",
+                      children: "License Number/Staff Number"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                      id: "password",
-                      type: "password",
-                      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("form-control", {
-                        "is-invalid": "password" in errors
-                      }),
-                      name: "password",
-                      placeholder: "Enter password",
+                      id: "licenseNo",
+                      type: "text",
                       maxLength: 15,
                       minLength: 6,
+                      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("form-control", {
+                        "is-invalid": "licenseNo" in errors
+                      }),
+                      name: "licenseNo",
+                      placeholder: "Enter licenseNo",
                       required: true,
                       onChange: handleChange,
                       onBlur: handleBlur,
@@ -14224,7 +14228,7 @@ var Login = function Login(props) {
                       ref: register({
                         required: true
                       })
-                    }), errors.password && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                    }), errors.licenseNo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                       className: "invalid-feedback",
                       children: "This field is required"
                     })]
@@ -14652,14 +14656,6 @@ var Register = function Register(props) {
                       }),
                       children: "Register"
                     })
-                  })]
-                }), success && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                  className: "alert alert-success text-center",
-                  role: "alert",
-                  children: ["Registration successful.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
-                    to: "/",
-                    href: "/",
-                    children: "Please log in with your new email and password."
                   })]
                 })]
               })
