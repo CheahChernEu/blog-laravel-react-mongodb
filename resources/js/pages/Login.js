@@ -8,7 +8,11 @@ import { useForm } from "react-hook-form";
 
 const Login = (props) => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const [stateForm, setStateForm] = useState({ email: "", password: "" });
+    const [stateForm, setStateForm] = useState({
+        email: "",
+        password: "",
+        licenseNo: "",
+    });
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState({ error: false, message: "" });
 
@@ -33,10 +37,12 @@ const Login = (props) => {
     };
 
     const onSubmit = () => {
-        const { email, password } = stateForm;
+        //e.preventDefault();
+        const { email, password, licenseNo } = stateForm;
         const credentials = {
             email,
             password,
+            licenseNo,
         };
         setLoading(true);
         submit(credentials);
@@ -150,24 +156,24 @@ const Login = (props) => {
                                         </div>
 
                                         <div className="form-group">
-                                            <label htmlFor="password">
-                                                Password
+                                            <label htmlFor="licenseNo">
+                                                License Number/Staff Number
                                             </label>
                                             <input
-                                                id="password"
-                                                type="password"
+                                                id="licenseNo"
+                                                type="text"
+                                                maxLength={15}
+                                                minLength={6}
                                                 className={classNames(
                                                     "form-control",
                                                     {
                                                         "is-invalid":
-                                                            "password" in
+                                                            "licenseNo" in
                                                             errors,
                                                     }
                                                 )}
-                                                name="password"
-                                                placeholder="Enter password"
-                                                maxLength={15}
-                                                minLength={6}
+                                                name="licenseNo"
+                                                placeholder="Enter licenseNo"
                                                 required
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
@@ -176,8 +182,7 @@ const Login = (props) => {
                                                     required: true,
                                                 })}
                                             />
-
-                                            {errors.password && (
+                                            {errors.licenseNo && (
                                                 <span className="invalid-feedback">
                                                     This field is required
                                                 </span>
