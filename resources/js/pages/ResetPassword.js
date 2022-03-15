@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import classNames from "classnames";
 import AuthService from "../services";
 import { useForm } from "react-hook-form";
-
+import AdminHeader from './../components/AdminHeader';
 const ResetPassword = (props) => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [stateForm, setStateForm] = useState({
@@ -100,6 +100,7 @@ const ResetPassword = (props) => {
     return (
         <>
             {isAuthenticated && <Redirect to={from} />}
+            <AdminHeader />
             <div className="d-flex flex-column flex-row align-content-center py-5">
                 <div className="container">
                     <div className="row">
@@ -236,7 +237,8 @@ const ResetPassword = (props) => {
                                                     className={classNames(
                                                         "btn btn-primary",
                                                         {
-                                                            "btn-loading": loading,
+                                                            "btn-loading":
+                                                                loading,
                                                         }
                                                     )}
                                                 >

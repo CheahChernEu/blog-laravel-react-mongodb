@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Http from "../Http";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-
+import AdminHeader from './../components/AdminHeader';
 const api = "/api/v1/slot";
 
 const AddSlot = () => {
@@ -61,7 +61,9 @@ const AddSlot = () => {
                     setError(false);
                 })
                 .catch(() => {
-                    setError("Sorry, there was an error saving your food truck slot.");
+                    setError(
+                        "Sorry, there was an error saving your food truck slot."
+                    );
                 });
         } else {
             Http.post(api, slot)
@@ -73,12 +75,13 @@ const AddSlot = () => {
                         content: "",
                         title: "",
                         image_url: "",
-
                     });
                     setError(false);
                 })
                 .catch(() => {
-                    setError("Sorry, there was an error saving your food truck slot.");
+                    setError(
+                        "Sorry, there was an error saving your food truck slot."
+                    );
                 });
         }
     };
@@ -136,158 +139,168 @@ const AddSlot = () => {
         });
     };
     return (
-        <div className="container py-5">
-            <div className="row">
-                <div className="col">
-                    <div className="add-todos mb-5">
-                        <h1 className="text-center mb-4">
-                            Add/ Update Food Truck Slot
-                        </h1>
-                        <form method="post" onSubmit={handleSubmit(onSubmit)}>
-                            <div className="form-group">
-                                <label htmlFor="title">Slot No</label>
-                                <input
-                                    id="title"
-                                    type="title"
-                                    name="title"
-                                    className="form-control mr-3"
-                                    placeholder="e.g. B01"
-                                    required
-                                    onChange={handleChange}
-                                    value={stateForm.title}
-                                    maxLength={100}
-                                    minLength={3}
-                                    ref={register({ required: true })}
-                                />
-                                {errors.title && (
-                                    <span className="invalid-feedback">
-                                        This field is required
-                                    </span>
-                                )}
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="addSlot">Address</label>
-                                <textarea
-                                    name="content"
-                                    id="content"
-                                    name="content"
-                                    required
-                                    maxLength={1000}
-                                    minLength={10}
-                                    className="form-control mr-3"
-                                    placeholder="e.g. 4C, Jalan Ipoh"
-                                    onChange={handleChange}
-                                    value={stateForm.content}
-                                    ref={register()}
-                                />
-
-                                {errors.content && (
-                                    <span className="invalid-feedback">
-                                        This field is required.
-                                    </span>
-                                )}
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="image_url">Slot Image Url</label>
-                                <input
-                                    id="image_url"
-                                    type="url"
-                                    name="image_url"
-                                    maxLength={100}
-                                    className="form-control mr-3"
-                                    placeholder="e.g.https://image.app.goo.gl"
-                                    onChange={handleChange}
-                                    maxLength={70}
-                                    value={stateForm.image_url}
-                                    ref={register()}
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="btn btn-block btn-outline-primary"
+        <>
+            <AdminHeader />
+            <div className="container py-5">
+                <div className="row">
+                    <div className="col">
+                        <div className="add-todos mb-5">
+                            <h1 className="text-center mb-4">
+                                Add/ Update Food Truck Slot
+                            </h1>
+                            <form
+                                method="post"
+                                onSubmit={handleSubmit(onSubmit)}
                             >
-                                Add
-                            </button>
-                        </form>
-                    </div>
-                    {error && (
-                        <div className="alert alert-warning" role="alert">
-                            {error}
+                                <div className="form-group">
+                                    <label htmlFor="title">Slot No</label>
+                                    <input
+                                        id="title"
+                                        type="title"
+                                        name="title"
+                                        className="form-control mr-3"
+                                        placeholder="e.g. B01"
+                                        required
+                                        onChange={handleChange}
+                                        value={stateForm.title}
+                                        maxLength={100}
+                                        minLength={3}
+                                        ref={register({ required: true })}
+                                    />
+                                    {errors.title && (
+                                        <span className="invalid-feedback">
+                                            This field is required
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="addSlot">Address</label>
+                                    <textarea
+                                        name="content"
+                                        id="content"
+                                        name="content"
+                                        required
+                                        maxLength={1000}
+                                        minLength={10}
+                                        className="form-control mr-3"
+                                        placeholder="e.g. 4C, Jalan Ipoh"
+                                        onChange={handleChange}
+                                        value={stateForm.content}
+                                        ref={register()}
+                                    />
+
+                                    {errors.content && (
+                                        <span className="invalid-feedback">
+                                            This field is required.
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="image_url">
+                                        Slot Image Url
+                                    </label>
+                                    <input
+                                        id="image_url"
+                                        type="url"
+                                        name="image_url"
+                                        maxLength={100}
+                                        className="form-control mr-3"
+                                        placeholder="e.g.https://image.app.goo.gl"
+                                        onChange={handleChange}
+                                        maxLength={70}
+                                        value={stateForm.image_url}
+                                        ref={register()}
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className="btn btn-block btn-outline-primary"
+                                >
+                                    Add
+                                </button>
+                            </form>
                         </div>
-                    )}
-                </div>
-                <div className="col">
-                    <div className="todos">
-                        <h1 className="text-center mb-4">List of Food Truck Slots</h1>
-                        <table className="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <th>Slot No</th>
-                                    <th>Address</th>
-                                    <th>Slot Image</th>
-                                    <th>Delete</th>
-                                    <th>Edit</th>
-                                </tr>
-                                {dataState.length > 0 &&
-                                    dataState.map((slot) => (
-                                        <tr key={slot.id}>
-                                            <td>{slot.title}</td>
-                                            <td>
-                                                {slot.content
-                                                    .slice(0, 30)
-                                                    .concat("...")}
-                                            </td>
-                                            <td>
-                                                <img
-                                                    src={slot.image_url}
-                                                    className="rounded mx-auto d-block"
-                                                ></img>
-                                            </td>
-                                            <td>
-                                                <span
-                                                    type="button"
-                                                    className="badge badge-danger"
-                                                    onClick={
-                                                        slot.user_id === id
-                                                            ? deleteSlot
-                                                            : () =>
-                                                                  console.log(
-                                                                      "No access to the slot created by other admin"
-                                                                  )
-                                                    }
-                                                    data-key={slot.id}
-                                                >
-                                                    Delete
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span
-                                                    type="button"
-                                                    className="badge badge-dark"
-                                                    onClick={
-                                                        slot.user_id === id
-                                                            ? () =>
-                                                                  editSlot(
-                                                                      slot
-                                                                  )
-                                                            : () =>
-                                                                  console.log(
-                                                                      "No access to the slot created by other admin"
-                                                                  )
-                                                    }
-                                                    data-key={slot.id}
-                                                >
-                                                    Edit
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))}
-                            </tbody>
-                        </table>
+                        {error && (
+                            <div className="alert alert-warning" role="alert">
+                                {error}
+                            </div>
+                        )}
+                    </div>
+                    <div className="col">
+                        <div className="todos">
+                            <h1 className="text-center mb-4">
+                                List of Food Truck Slots
+                            </h1>
+                            <table className="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th>Slot No</th>
+                                        <th>Address</th>
+                                        <th>Slot Image</th>
+                                        <th>Delete</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                    {dataState.length > 0 &&
+                                        dataState.map((slot) => (
+                                            <tr key={slot.id}>
+                                                <td>{slot.title}</td>
+                                                <td>
+                                                    {slot.content
+                                                        .slice(0, 30)
+                                                        .concat("...")}
+                                                </td>
+                                                <td>
+                                                    <img
+                                                        src={slot.image_url}
+                                                        className="rounded mx-auto d-block"
+                                                    ></img>
+                                                </td>
+                                                <td>
+                                                    <span
+                                                        type="button"
+                                                        className="badge badge-danger"
+                                                        onClick={
+                                                            slot.user_id === id
+                                                                ? deleteSlot
+                                                                : () =>
+                                                                      console.log(
+                                                                          "No access to the slot created by other admin"
+                                                                      )
+                                                        }
+                                                        data-key={slot.id}
+                                                    >
+                                                        Delete
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span
+                                                        type="button"
+                                                        className="badge badge-dark"
+                                                        onClick={
+                                                            slot.user_id === id
+                                                                ? () =>
+                                                                      editSlot(
+                                                                          slot
+                                                                      )
+                                                                : () =>
+                                                                      console.log(
+                                                                          "No access to the slot created by other admin"
+                                                                      )
+                                                        }
+                                                        data-key={slot.id}
+                                                    >
+                                                        Edit
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

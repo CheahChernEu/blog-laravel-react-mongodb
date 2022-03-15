@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, setState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
@@ -6,6 +6,8 @@ import AuthService from "../services";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
 import logo from "../assets/logo.png";
+import AdminHeader from "./../components/AdminHeader";
+import { set } from "lodash";
 
 const Home = (props) => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -16,10 +18,31 @@ const Home = (props) => {
     });
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState({ error: false, message: "" });
-
+    const [userData, setUserData] = useState({ licenseNo: "", type: "" });
+    const { from } = props.location.state || {
+        from: { pathname: "/admin" },
+    };
+    const [age, setAge] = useState(19);
+    // const userData = { licenseNo: "", type: "" };
     // If user is already authenticated we redirect to entry location.
-    const { from } = props.location.state || { from: { pathname: "/" } };
+
     const { isAuthenticated } = props;
+
+    const navigation = (userData) => {
+        if (userData.type === "admin") {
+            setFrom(
+                props.location.state || {
+                    from: { pathname: "/admin" },
+                }
+            );
+        } else if (userData.type === "user") {
+            setFrom(
+                props.location.state || {
+                    from: { pathname: "/owner" },
+                }
+            );
+        }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -49,23 +72,48 @@ const Home = (props) => {
         submit(credentials);
     };
 
-    const submit = (credentials) => {
-        props.dispatch(AuthService.login(credentials)).catch((err) => {
-            console.log(err);
-            const errorsCredentials = Object.values(err.errors);
-            errorsCredentials.join(" ");
-            const responses = {
-                error: true,
-                message: errorsCredentials[0],
+    function submit(credentials) {
+
+            let isMounted = true;
+
+            if (isMounted) {
+                props
+                    .dispatch(AuthService.login(credentials))
+                    .then((response) => {
+                        userData.licenseNo = response["licenseNo"];
+
+                        userData.type = response["type"];
+                        console.log(userData);
+                        // navigation(userData);
+                        console.log("Navigation");
+                        // console.log(navigation(userData));
+                        console.log(setAge(age + 1));
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        const errorsCredentials = Object.values(err.errors);
+                        errorsCredentials.join(" ");
+                        const responses = {
+                            error: true,
+                            message: errorsCredentials[0],
+                        };
+
+                        console.log(setResponse(responses));
+                        setLoading(false);
+                    });
+            }
+
+            return () => {
+                isMounted = false;
             };
-            setResponse(responses);
-            setLoading(false);
-        });
-    };
+        
+    }
 
     return (
         <>
             {isAuthenticated && <Redirect to={from} />}
+
+            <AdminHeader />
             <div className="d-flex flex-column flex-md-row align-items-md-center py-5">
                 <div className="container">
                     <div className="row">
@@ -76,8 +124,22 @@ const Home = (props) => {
                                     className="rounded-circle "
                                     alt="Logo"
                                 ></img>
-                                <h2 style={{display:'flex', justifyContent: 'center'}}>Welcome to F_Truck</h2>
-                                <p style={{display:'flex', justifyContent: 'center'}}>F_Truck brings you happiness everyday!</p>
+                                <h2
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                    }}
+                                >
+                                    Welcome to F_Truck
+                                </h2>
+                                <p
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                    }}
+                                >
+                                    F_Truck brings you happiness everyday!
+                                </p>
                             </div>
                         </div>
                         <div className="section-login col-lg-6">
@@ -215,7 +277,7 @@ const Home = (props) => {
                                         </div>
 
                                         <div className="login-invite-text text-center">
-                                            {"Don't have an account?"}{" "}
+                                            {"Don't have an account?"}
                                             <Link to="/register">Register</Link>
                                             .
                                         </div>

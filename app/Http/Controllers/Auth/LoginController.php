@@ -25,7 +25,6 @@ class LoginController extends APIController
 
         // Get the user data.
         $user = auth()->user();
-
         return response()->json([
             'status' => 200,
             'message' => 'Authorized.',
@@ -34,7 +33,9 @@ class LoginController extends APIController
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => array(
                 'id' => $user->id, // $user->hashid
-                'licenseNo' => $user->licenseNo
+                'licenseNo' => $user->licenseNo,
+                'type' => $user->type,
+
             )
         ], 200);
     }

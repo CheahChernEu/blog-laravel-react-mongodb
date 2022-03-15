@@ -5,7 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 import classNames from "classnames";
 import AuthService from "../services";
 import { useForm } from "react-hook-form";
-
+import AdminHeader from "./../components/AdminHeader";
 const Register = (props) => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [stateForm, setStateForm] = useState({
@@ -93,6 +93,7 @@ const Register = (props) => {
     return (
         <>
             {isAuthenticated && <Redirect to="/" replace />}
+            <AdminHeader />
             <div className="d-flex flex-column flex-row align-content-center py-5">
                 <div className="container">
                     <div className="row">
@@ -289,7 +290,7 @@ const Register = (props) => {
                                                                 errors,
                                                         }
                                                     )}
-                                                    placeholder="Cellphone"
+                                                    placeholder="Phone Number"
                                                     required
                                                     onChange={
                                                         onHandleTelephoneChange

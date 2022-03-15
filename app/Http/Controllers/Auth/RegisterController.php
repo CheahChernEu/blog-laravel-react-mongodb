@@ -54,6 +54,7 @@ class RegisterController extends APIController
      */
     protected function create(array $data)
     {
+        \Log::debug($data);
         return User::create([
             'licenseNo' => $data['licenseNo'],
             'email' => $data['email'],
